@@ -159,11 +159,11 @@ public class SimpleWebServer extends NanoHTTPD {
             for (String mime : mimeTypes) {
                 String[] indexFiles = info.getIndexFilesForMimeType(mime);
                 if (!quiet) {
-                    System.out.print("# Found plugin for Mime type: \"" + mime + "\"");
+                    log("# Found plugin for Mime type: \"" + mime + "\"");
                     if (indexFiles != null) {
-                        System.out.print(" (serving index files: ");
+                        log(" (serving index files: ");
                         for (String indexFile : indexFiles) {
-                            System.out.print(indexFile + " ");
+                            log(indexFile + " ");
                         }
                     }
                     log(").");
@@ -201,11 +201,11 @@ public class SimpleWebServer extends NanoHTTPD {
             for (String mime : mimeTypes) {
                 String[] indexFiles = info.getIndexFilesForMimeType(mime);
                 if (!quiet) {
-                    System.out.print("# Found plugin for Mime type: \"" + mime + "\"");
+                    log("# Found plugin for Mime type: \"" + mime + "\"");
                     if (indexFiles != null) {
-                        System.out.print(" (serving index files: ");
+                        log(" (serving index files: ");
                         for (String indexFile : indexFiles) {
-                            System.out.print(indexFile + " ");
+                            log(indexFile + " ");
                         }
                     }
                     log(").");
