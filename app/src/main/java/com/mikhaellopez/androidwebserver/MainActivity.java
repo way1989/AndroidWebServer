@@ -10,6 +10,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -20,6 +21,15 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.mikhaellopez.androidwebserver.elonen.SimpleWebServer;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+
+import fi.iki.elonen.NanoHTTPD;
+import fi.iki.elonen.util.ServerRunner;
+
 /**
  * Created by Mikhael LOPEZ on 14/12/2015.
  */
@@ -28,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     private static final int DEFAULT_PORT = 8080;
 
     // INSTANCE OF ANDROID WEB SERVER
-    private AndroidWebServer androidWebServer;
+    private NanoHTTPD androidWebServer;
     private BroadcastReceiver broadcastReceiverNetworkState;
     private static boolean isStarted = false;
 
@@ -85,6 +95,7 @@ public class MainActivity extends AppCompatActivity {
                     throw new Exception();
                 }
                 androidWebServer = new AndroidWebServer(port);
+                //androidWebServer = new SimpleWebServer(null, port, Environment.getExternalStorageDirectory(), false);
                 androidWebServer.start();
                 return true;
             } catch (Exception e) {
